@@ -1,0 +1,184 @@
+﻿<Window x:Class="EPVDesktopPro.MainWindow"
+         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"            
+        xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com"
+        xmlns:local="clr-namespace:EPVDesktopPro"
+        AllowsTransparency="True" Background="Transparent"       
+        WindowStyle="None"     
+        WindowStartupLocation="CenterScreen"
+        Title="EPV 1.1.0" Height="720" Width="1080" Closed="Window_Closed" Loaded="Window_Loaded" Closing="Window_Closing" >
+
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis"/>
+    </Window.Resources>
+    <Border Background="#ebebeb" CornerRadius="30" MouseDown="Border_MouseDown" MouseLeftButtonDown="Border_MouseLeftButtonDown">
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <!--Left Menu-->
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!--Menu Icon-->
+                <Button Name="btnConfig" Margin="20 28 0 35" Click="btnConfig_Click" Style="{StaticResource topButton}">
+                    <Icon:PackIconMaterial Kind="Adjust" Width="15" Height="15"/>
+
+                </Button>
+
+                <Border Grid.Row="1" Background="#002b49" CornerRadius="0 50 0 30" HorizontalAlignment="Left" Width="200">
+                    <DockPanel>
+                        <!--Menu Logo-->
+                        <Border Width="80" Height="80" Padding="3" Background="White" CornerRadius="100"
+                                DockPanel.Dock="Top" HorizontalAlignment="Left" Margin="20 -30 0 0">
+                            <Image Source="/img/Jabil_Circuit_Logo.svg.png" />
+
+
+                        </Border>
+                        <TextBlock x:Name="lbltitle" Foreground="White" FontSize="22" FontWeight="SemiBold" DockPanel.Dock="Top" TextAlignment="Center" Margin="5 25 0 10"/>
+                        <TextBlock x:Name="lblEquipmentName" Text="Equipment Name" Foreground="#ebebeb" FontSize="18" FontWeight="SemiBold" DockPanel.Dock="Top" TextAlignment="Center" Margin="5 25 0 10"/>
+                        <!--Menu Separator-->
+                        <Separator Margin="25" DockPanel.Dock="Top" Height="0.8" Background="White"/>
+
+                        <!--Menu Buttons-->
+                        <StackPanel DockPanel.Dock="Top" >
+                            <Button Style="{StaticResource menuButton}">
+                                <StackPanel Orientation="Horizontal">
+                                    <Icon:PackIconMaterial Kind="LineScan" Style="{StaticResource menuButtonIcon}"/>
+                                    <ComboBox  Name="cmbLine" Width="100" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" SelectionChanged="cmbLine_SelectionChanged" BorderThickness="1,1,1,1" Background="#FF002B49" Foreground="#FFA0A0A0" FontWeight="Bold"/>
+                                </StackPanel>
+                            </Button>
+                            <Button Style="{StaticResource menuButton}">
+                                <StackPanel Orientation="Horizontal" >
+                                    <Icon:PackIconMaterial Kind="Monitor" Style="{StaticResource menuButtonIcon}"/>
+                                    <ComboBox  Name="cmbProgramName" Style="{StaticResource MiComboBoxStyle}" Width="100" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" SelectionChanged="cmbProgramName_SelectionChanged" BorderThickness="1,1,1,1" Background="#FF002B49" Foreground="#FFA0A0A0" FontWeight="Bold">
+                                    </ComboBox>
+                                </StackPanel>
+                            </Button>
+                            <Button Style="{StaticResource menuButton}">
+                                <StackPanel Orientation="Horizontal">
+                                    <Icon:PackIconMaterial Kind="SelectionEllipseArrowInside" Style="{StaticResource menuButtonIcon}"/>
+                                    <TextBlock Name="txtType" Text="Type"/>
+                                </StackPanel>
+                            </Button>
+                            <Button Style="{StaticResource menuButton}">
+                                <StackPanel Orientation="Horizontal">
+                                    <Icon:PackIconMaterial Kind="BackupRestore" Style="{StaticResource menuButtonIcon}"/>
+                                    <TextBlock Name="txtLine" Text="LXXX"/>
+                                </StackPanel>
+                            </Button>
+                            <Button Style="{StaticResource menuButton}">
+                                <StackPanel Orientation="Horizontal">
+                                    <Icon:PackIconMaterial Kind="File" Style="{StaticResource menuButtonIcon}"/>
+                                    <TextBlock Name="txtPathLogFile" Text="C:\Logs"/>
+                                </StackPanel>
+                            </Button>
+                            <Button Style="{StaticResource menuButton}">
+                                <StackPanel Orientation="Horizontal">
+                                    <Icon:PackIconMaterial Kind="BackupRestore" Style="{StaticResource menuButtonIcon}"/>
+                                    <TextBlock Name="txtBackupFie" Text="C:\Logs\fileBackup"/>
+                                </StackPanel>
+                            </Button>
+                            <Button Style="{StaticResource menuButton}">
+                                <StackPanel Orientation="Horizontal">
+                                    <Icon:PackIconMaterial Kind="BackupRestore" Style="{StaticResource menuButtonIcon}"/>
+                                    <TextBlock Name="txtBackupFileCoords" Text="C:\Logs\fileBackup"/>
+                                </StackPanel>
+                            </Button>
+                            <Button Style="{StaticResource menuButton}">
+                                <StackPanel Orientation="Horizontal">
+                                    <Icon:PackIconMaterial Kind="FaceMan" Style="{StaticResource menuButtonIcon}"/>
+                                    <TextBlock Name="lblUsername" Text="Username"/>
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
+                        <StackPanel DockPanel.Dock="Bottom">
+                            <Button Name="btnHelp" Style="{StaticResource menuButton}" Margin="20 80 20 0" Click="btnHelp_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Icon:PackIconMaterial Kind="HelpBox" Style="{StaticResource menuButtonIcon}"/>
+                                    <TextBlock Name="txtHelp" Text="Help"/>
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
+                    </DockPanel>
+
+
+
+                </Border>
+
+
+            </Grid>
+            <!--Main Content-->
+            <Grid Grid.Column="1" Margin="30,20,20,54">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="15*"/>
+                    <ColumnDefinition Width="68*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <!--Title-->
+                <Image x:Name="ImgGif" gif:ImageBehavior.RepeatBehavior="3x" Width="50" Margin="480,0,0,19" Grid.Row="1" HorizontalAlignment="Left"
+               gif:ImageBehavior.AnimatedSource="/img/gear.gif" Grid.Column="1" Grid.RowSpan="3" />
+                <RichTextBox x:Name="lblServer" Background="#ebebeb" Foreground="red" FontSize="18" FontWeight="SemiBold" DockPanel.Dock="Top" Margin="0,0,45,-38" Grid.ColumnSpan="2" Grid.Row="6"/>
+                <TextBlock Text="EPV Desktop 1.1.0" Grid.Row="1" FontSize="32" FontWeight="SemiBold" Margin="0,10,0,19" HorizontalAlignment="Left" Foreground="#121518" Grid.ColumnSpan="2" Grid.RowSpan="3"/>
+                <!--Start Button-->
+                <Button Name="btnStart" Style="{StaticResource startButton}" Click="btnStart_Click" Grid.Column="1" HorizontalAlignment="Left" Margin="530,14,0,14" Grid.Row="1">
+                    <StackPanel Orientation="Horizontal">
+                        <Icon:PackIconMaterial Kind="Play" VerticalAlignment="Center" Width="11" Height="11" Margin="0 1 8 0"/>
+                        <TextBlock Name="btnPlay" Text="Start Validation" MouseUp="TextBlock_MouseUp">
+                            <TextBlock.InputBindings>
+                                <MouseBinding Command="{Binding PlayApp}" MouseAction="LeftClick" />
+                            </TextBlock.InputBindings>
+                        </TextBlock>
+                    </StackPanel>
+                </Button>
+                <!--Start Button-->
+                <Button Name="btnReport" Style="{StaticResource startButton}" Click="btnReport_Click" Grid.Column="1" HorizontalAlignment="Left" Margin="300,14,0,14" Grid.Row="1">
+                    <StackPanel Orientation="Horizontal">
+                        <Icon:PackIconMaterial Kind="ChartArc" VerticalAlignment="Center" Width="11" Height="11" Margin="0 1 8 0"/>
+                        <TextBlock Name="btnPlay1" Text="Report" MouseUp="TextBlock_MouseUp">                          
+                        </TextBlock>
+                    </StackPanel>
+                </Button>
+
+
+                <Button Name="btnMinimizer" Margin="0 1 10 10" HorizontalAlignment="Right" Style="{StaticResource topButton}"  Click="btnMinimizer_Click" Grid.Column="1">
+                    <Icon:PackIconMaterial Kind="WindowMinimize" Width="15" Height="15"/>
+                </Button>
+
+                <Separator Height="1" Grid.Row="3" Background="Black" Margin="0,8,0,10" Grid.ColumnSpan="2"/>
+                <TextBlock Name="lblValidation" Text="Validation"  Grid.Row="4" FontSize="18" FontWeight="SemiBold" Foreground="#121518" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.ColumnSpan="2" Width="266"/>
+           
+
+
+                <!--Serial Number DataGrid-->
+
+
+                <DataGrid Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" Grid.Row="5" x:Name="tblResults" LoadingRow="tblResults_LoadingRow" AddingNewItem="tblResults_AddingNewItem" Grid.ColumnSpan="2" Margin="0,10,0,39">
+
+                    <DataGrid.Columns>
+
+                    </DataGrid.Columns>
+
+                </DataGrid>
+                <!--Pagination Section-->
+
+            </Grid>
+
+        </Grid>
+    </Border>
+</Window>

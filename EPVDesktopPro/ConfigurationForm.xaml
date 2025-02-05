@@ -1,0 +1,106 @@
+﻿<Window x:Class="EPVDesktopPro.ConfigurationForm"
+         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"            
+        xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com"
+        xmlns:local="clr-namespace:EPVDesktopPro"
+        AllowsTransparency="True" Background="Transparent"       
+        WindowStyle="None"     
+        WindowStartupLocation="CenterScreen"
+        Title="EPV 1.1.0" Height="300" Width="500"  >
+
+
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis"/>
+    </Window.Resources>
+    <Border Background="#ebebeb" CornerRadius="30">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="230"/>
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="20"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="200"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Border Grid.Column="3" Grid.Row="0" CornerRadius="0 50 0 30">
+
+                <Button Name="btnClose" Margin="0 1 10 10" HorizontalAlignment="Right" Style="{StaticResource topButton}"  Click="btnClose_Click">
+                    <Icon:PackIconMaterial Kind="WindowClose" Width="15" Height="15"/>
+                </Button>
+            </Border>
+            <Border Grid.Column="1" Grid.Row="1" Background="#002b49" CornerRadius="0 50 0 30">
+
+                <DockPanel>
+                    <StackPanel DockPanel.Dock="Top" >
+                        <TextBlock Text="Configuration" Foreground="White" FontSize="22" FontWeight="Bold" DockPanel.Dock="Top" TextAlignment="Center" Margin="5 25 0 10"/>
+                        <StackPanel DockPanel.Dock="Top" >
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Margin="10 0 20 10" VerticalAlignment="Center" Foreground="White" Text="Server:" FontWeight="Bold"/>
+                                <TextBox Name="txtServer" Text="" FontSize="12"  DockPanel.Dock="Top" TextAlignment="Center" Margin="5 0 0 10" Height="20" Width="140"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Margin="10 0 1 10" Foreground="White" VerticalAlignment="Center" Text="Database:" FontWeight="Bold"/>
+                                <TextBox Name="txtDataBase"  FontSize="12"  DockPanel.Dock="Top" Margin="9 0 0 10" Height="20" Width="140"  />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Margin="10 0 27 10" Foreground="White" VerticalAlignment="Center" Text="User:" FontWeight="Bold"/>
+                                <TextBox Name="txtUsername"  FontSize="12"  DockPanel.Dock="Top" Margin="9 0 0 10" Height="20" Width="140"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Margin="10 0 0 10" Foreground="White" VerticalAlignment="Center" Text="Password:" FontWeight="Bold"/>
+                                <PasswordBox Name="txtPassword"  FontSize="12"  DockPanel.Dock="Top" Margin="9 0 0 10" Height="20" Width="140"/>
+                            </StackPanel>
+                        </StackPanel>
+
+                    </StackPanel>
+                </DockPanel>
+            </Border>
+            <Border Grid.Column="3" Grid.Row="1" Background="#002b49" CornerRadius="0 50 0 30">
+
+                <DockPanel>
+                    <StackPanel DockPanel.Dock="Top" >
+                        <TextBlock Text="Access" Foreground="White" FontSize="22" FontWeight="Bold" DockPanel.Dock="Top" TextAlignment="Center" Margin="5 25 0 10"/>
+                        <StackPanel DockPanel.Dock="Top" >                        
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Margin="10 0 27 10" Foreground="White" VerticalAlignment="Center" Text="User:" FontWeight="Bold"/>
+                                <TextBox Name="txtUsername1"  FontSize="12"  DockPanel.Dock="Top" Margin="9 0 0 10" Height="20" Width="140"  />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Margin="10 0 0 10" Foreground="White" VerticalAlignment="Center" Text="Password:" FontWeight="Bold"/>
+                                <PasswordBox Name="txtPassword1"  FontSize="12"  DockPanel.Dock="Top" Margin="9 0 0 10" Height="20" Width="140" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Name="btnOk" Background="White" Style="{StaticResource startButton}" Margin="15 10 5 10" Click="btnOk_Click" Width="86">
+                                <StackPanel Orientation="Horizontal">
+                                    <Icon:PackIconMaterial Kind="ContentSave" VerticalAlignment="Center" Width="15" Height="15" Margin="0 1 8 0" Foreground="#002b49"/>
+                                    <TextBlock Name="btnPlay" Text="Ok" Foreground="#002b49" FontWeight="Bold" >
+                                        <TextBlock.InputBindings> 
+                                            <MouseBinding Command="{Binding PlayApp}"  />
+                                        </TextBlock.InputBindings>
+                                    </TextBlock>
+                                </StackPanel>
+                            </Button>
+                            <Button Name="btnCancel" Background="White" Style="{StaticResource startButton}" Margin="20 10 5 10" Click="btnCancel_Click" Width="85">
+                                <StackPanel Orientation="Horizontal">
+                                    <Icon:PackIconMaterial Kind="Cancel" VerticalAlignment="Center" Width="15" Height="15" Margin="0 1 8 0" Foreground="#002b49"/>
+                                    <TextBlock Name="btnPlay1" Text="Cancel" Foreground="#002b49" FontWeight="Bold" >
+                                        <TextBlock.InputBindings>
+                                            <MouseBinding Command="{Binding PlayApp}"  />
+                                        </TextBlock.InputBindings>
+                                    </TextBlock>
+                                </StackPanel>
+                                </Button>
+                            </StackPanel>
+                        </StackPanel>
+
+                    </StackPanel>
+                </DockPanel>
+            </Border>
+        </Grid>
+    </Border>
+</Window>
